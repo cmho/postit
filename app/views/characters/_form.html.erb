@@ -1,0 +1,133 @@
+<%= form_for(@character) do |f| %>
+  <% if @character.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@character.errors.count, "error") %> prohibited this character from being saved:</h2>
+
+      <ul>
+      <% @character.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :class %><br />
+    <%= f.number_field :class %>
+  </div>
+  <div class="field">
+    <%= f.label :subclass %><br />
+    <%= f.number_field :subclass %>
+  </div>
+  <div class="field">
+    <%= f.label :race %><br />
+    <%= f.number_field :race %>
+  </div>
+  <div class="field">
+    <%= f.label :subrace %><br />
+    <%= f.number_field :subrace %>
+  </div>
+  <div class="field">
+    <%= f.label :strength %><br />
+    <%= f.number_field :strength %>
+  </div>
+  <div class="field">
+    <%= f.label :dexterity %><br />
+    <%= f.number_field :dexterity %>
+  </div>
+  <div class="field">
+    <%= f.label :constitution %><br />
+    <%= f.number_field :constitution %>
+  </div>
+  <div class="field">
+    <%= f.label :intelligence %><br />
+    <%= f.number_field :intelligence %>
+  </div>
+  <div class="field">
+    <%= f.label :wisdom %><br />
+    <%= f.number_field :wisdom %>
+  </div>
+  <div class="field">
+    <%= f.label :charisma %><br />
+    <%= f.number_field :charisma %>
+  </div>
+  <div class="field">
+    <%= f.label :background %><br />
+    <%= f.text_field :background %>
+  </div>
+  <div class="field">
+    <%= f.label :background_notes %><br />
+    <%= f.text_area :background_notes %>
+  </div>
+  <div class="field">
+    <%= f.label :equipment %><br />
+    <%= f.text_area :equipment %>
+  </div>
+  <div class="field">
+    <%= f.label :hit_points %><br />
+    <%= f.number_field :hit_points %>
+  </div>
+  <div class="field">
+    <%= f.label :hit_dice_number %><br />
+    <%= f.number_field :hit_dice_number %>
+  </div>
+  <div class="field">
+    <%= f.label :hit_dice_type %><br />
+    <%= f.number_field :hit_dice_type %>
+  </div>
+  <div class="field">
+    <%= f.label :armor_class %><br />
+    <%= f.number_field :armor_class %>
+  </div>
+  <div class="field">
+    <%= f.label :initiative_mod %><br />
+    <%= f.number_field :initiative_mod %>
+  </div>
+  <div class="field">
+    <%= f.label :melee_attack_mod %><br />
+    <%= f.number_field :melee_attack_mod %>
+  </div>
+  <div class="field">
+    <%= f.label :ranged_attack_mod %><br />
+    <%= f.number_field :ranged_attack_mod %>
+  </div>
+  <div class="field">
+    <%= f.label :magical_ability_mod %><br />
+    <%= f.number_field :magical_ability_mod %>
+  </div>
+  <div class="field">
+    <%= f.label :saving_throw_dc %><br />
+    <%= f.number_field :saving_throw_dc %>
+  </div>
+  <div class="field">
+    <%= f.label :height %><br />
+    <%= f.text_field :height %>
+  </div>
+  <div class="field">
+    <%= f.label :weight %><br />
+    <%= f.text_field :weight %>
+  </div>
+  <div class="field">
+    <%= f.label :physical_description %><br />
+    <%= f.text_area :physical_description %>
+  </div>
+  <div class="field">
+    <%= f.label :goals_and_motivations %><br />
+    <%= f.text_area :goals_and_motivations %>
+  </div>
+  <div class="field">
+    <%= f.label :alignment %><br />
+    <%= f.number_field :alignment %>
+  </div>
+  <div class="field">
+    <%= f.label :personality %><br />
+    <%= f.text_area :personality %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
