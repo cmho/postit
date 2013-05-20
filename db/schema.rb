@@ -11,57 +11,42 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130506161949) do
+ActiveRecord::Schema.define(:version => 20130520205621) do
 
-  create_table "characters", :force => true do |t|
-    t.string   "name"
-    t.integer  "class"
-    t.integer  "subclass"
-    t.integer  "race"
-    t.integer  "subrace"
-    t.integer  "strength"
-    t.integer  "dexterity"
-    t.integer  "constitution"
-    t.integer  "intelligence"
-    t.integer  "wisdom"
-    t.integer  "charisma"
-    t.string   "background"
-    t.text     "background_notes"
-    t.text     "equipment"
-    t.integer  "hit_points"
-    t.integer  "hit_dice_number"
-    t.integer  "hit_dice_type"
-    t.integer  "armor_class"
-    t.integer  "initiative_mod"
-    t.integer  "melee_attack_mod"
-    t.integer  "ranged_attack_mod"
-    t.integer  "magical_ability_mod"
-    t.integer  "saving_throw_dc"
-    t.string   "height"
-    t.string   "weight"
-    t.text     "physical_description"
-    t.text     "goals_and_motivations"
-    t.integer  "alignment"
-    t.text     "personality"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
-    t.integer  "user_id"
-    t.integer  "game_id"
+  create_table "categories", :force => true do |t|
+    t.string "name"
   end
 
-  create_table "games", :force => true do |t|
-    t.string   "name"
+  create_table "comments", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "content"
+    t.integer  "post_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "post_has_categories", :force => true do |t|
+    t.integer  "post_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "posts", :force => true do |t|
+    t.string   "title"
+    t.string   "url"
+    t.text     "description"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
-    t.string   "name"
-    t.string   "email"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.string   "password"
+    t.string "username"
+    t.string "name"
+    t.string "password"
+    t.string "password_confirmation"
   end
 
 end

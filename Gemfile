@@ -26,6 +26,7 @@ group :development do
   gem 'quiet_assets'
   gem 'better_errors'
   gem 'meta_request'
+  gem 'thin'
 end
 
 group :production do

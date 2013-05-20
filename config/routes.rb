@@ -1,12 +1,4 @@
 Postit::Application.routes.draw do
-  resources :characters
-
-
-  resources :games
-
-
-  resources :users
-
-
+  resources :posts, :except => :destroy
   root to: 'posts#index'
 end
