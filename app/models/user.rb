@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 	attr_accessible :username, :password, :password_confirmation
 
 	has_many :posts
+	has_many :comments
 
 	def self.authenticate(username, password)
 		find_by_username(username).try(:authenticate, password)

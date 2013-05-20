@@ -29,5 +29,7 @@ class PostsController < ApplicationController
 
   def show
   	@post = Post.find(params[:id])
+  	@comments = Comments.find_all_by_post_id(params[:id])
+  	@comment = Comments.new
   end
 end
