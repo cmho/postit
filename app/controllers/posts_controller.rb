@@ -3,8 +3,12 @@ class PostsController < ApplicationController
   	@posts = Post.all
   end
 
+  def new
+    @post = Post.new
+  end
+
   def create
-  	@post = Post.new(:title => params[:title], :url => params[:url], :description => params[:description], :user_id => 1)
+  	@post = Post.new(params[:post])
 
   	if @post.save
   		redirect_to(@post, :notice => "Your post was created successfully.")
@@ -20,7 +24,7 @@ class PostsController < ApplicationController
   def update
   	@post = Post.find(params[:id])
 
-  	if @post.update_attributes(:title => params[:title], :url => params[:url], :description => params[:description])
+  	if @post.update_attributes(params[:post])
   		redirect_to(@post, :notice => "Your post was updated successfully.")
   	else
   		render :action => "edit"
