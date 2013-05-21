@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 	validates_presence_of :password_confirmation, :on => :create
 	validates_uniqueness_of :username
 
-	attr_accessible :username, :password, :password_confirmation
+	attr_accessible :username, :name, :password, :password_confirmation
 
 	has_many :posts
 	has_many :comments

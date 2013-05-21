@@ -1,3 +1,5 @@
+require 'pry'
+
 class PostsController < ApplicationController
   def index
   	@posts = Post.all
@@ -10,7 +12,9 @@ class PostsController < ApplicationController
 
   def create
   	@post = Post.new(params[:post])
-
+    @post.categories.delete("")
+    @post.categories.map! {|category| Category.find(category)}
+    binding.pry
   	if @post.save
   		redirect_to(@post, :notice => "Your post was created successfully.")
   	else
@@ -25,7 +29,8 @@ class PostsController < ApplicationController
 
   def update
   	@post = Post.find(params[:id])
-
+    params[:post][:categories].delete("")
+    params[:post][:categories].map! {|category| Category.find(category)}
   	if @post.update_attributes(params[:post])
   		redirect_to(@post, :notice => "Your post was updated successfully.")
   	else

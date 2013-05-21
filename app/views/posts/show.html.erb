@@ -13,7 +13,6 @@
 			<%= f.label :content %>
 			<%= f.text_area :content, :rows => 10 %>
 			<%= f.hidden_field :user_id, :value => 1 %>
-			<%= f.hidden_field :post_id, :value => @post.id %>
 			<br />
 			<%= f.submit :value => "Post" %>
 		<% end %>

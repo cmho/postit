@@ -2,7 +2,13 @@
   <li>
     <%= link_to "Postit!", root_path, :class => 'brand' %>
   </li>
-  <li>
-    <%= link_to 'link', '' %>
-  </li>
+  <% if current_user.nil? %>
+	<li><a href="/login">Log in</a></li>
+	<li><a href="/register">Register</a></li>
+  <% else %>
+	<li><%= link_to "Post", new_post_path %></li>
+	<li><%= link_to "Manage Categories", categories_path %></li>
+	<li><%= link_to "Edit Account", edit_user_path %></li>
+	<li><a href="/logout">Log out</a></li>
+  <% end %>
 </ul>

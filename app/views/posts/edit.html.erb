@@ -7,6 +7,8 @@
 	<%= f.text_field :url %>
 	<%= f.label :description %>
 	<%= f.text_area :description %>
+	<%= f.label :categories %>
+	<%= f.select :categories, @category_list.collect{|c| [c.name, c.id]}, {}, {multiple: 'multiple'} %>
 	<br />
 	<%= f.submit %>
 <% end %>

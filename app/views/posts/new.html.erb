@@ -8,6 +8,8 @@
 	<%= f.label :description %>
 	<%= f.text_area :description %>
 	<%= f.hidden_field :user_id, :value => 1 %>
+	<%= f.label :categories %>
+	<%= f.select :categories, @category_list.collect{|c| [c.name, c.id]}, {}, {multiple: 'multiple'} %>
 	<br />
 	<%= f.submit :value => "Post" %>
 <% end %>
