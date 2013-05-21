@@ -1,0 +1,13 @@
+<h2>Create Post</h2>
+
+<%= form_for @post, :url => posts_path do |f| %>
+	<%= f.label :title %>
+	<%= f.text_field :title %>
+	<%= f.label :url, "URL" %>
+	<%= f.text_field :url %>
+	<%= f.label :description %>
+	<%= f.text_area :description %>
+	<%= f.hidden_field :user_id, :value => 1 %>
+	<br />
+	<%= f.submit :value => "Post" %>
+<% end %>

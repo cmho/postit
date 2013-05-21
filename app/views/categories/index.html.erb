@@ -1,0 +1,16 @@
+<h2>List of Categories</h2>
+
+<table>
+	<tr>
+		<th>Category Name</th>
+		<th>Posts</th>
+		<th></th>
+	</tr>
+	<% @categories.each do |category| %>
+	<tr>
+		<td><%= category.name %></td>
+		<td><%= category.posts.length %></td>
+		<td><a href="<%= edit_category_path(category.id) %>">Edit</a></td>
+	</tr>
+	<% end %>
+</table>
