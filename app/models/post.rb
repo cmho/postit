@@ -3,4 +3,5 @@ class Post < ActiveRecord::Base
 	has_many :post_has_categories
 	has_many :categories, :through => :post_has_categories
 	has_many :comments, :dependent => :destroy
+	validates_presence_of :title, :description
 end

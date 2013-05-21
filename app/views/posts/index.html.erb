@@ -1,6 +1,6 @@
 <% @posts.each do |post| %>
 	<div class="post-item">
-		<h2><a href="<%= post.url %>" rel="external"><%= post.title %></a></h2>
+		<h2><a href="<% unless post.url.empty? %><%= post.url %><% else %><%= post_path(post.id) %><% end %>" rel="external"><%= post.title %></a></h2>
 		<%= post.description %>
 		<div class="metadata">
 			Posted by <%= post.user.name %>
