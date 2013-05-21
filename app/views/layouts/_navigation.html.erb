@@ -1,7 +1,5 @@
+<h1>Post It!</h1>
 <ul class="nav">
-  <li>
-    <%= link_to "Postit!", root_path, :class => 'brand' %>
-  </li>
   <% if current_user.nil? %>
 	<li><a href="/login">Log in</a></li>
 	<li><a href="/register">Register</a></li>

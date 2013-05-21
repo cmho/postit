@@ -12,33 +12,29 @@
  *= require_tree .
  */
 
-@import 'bootstrap';
-@import "bootstrap-responsive";
-
 body {
-  text-align: center;
   font-family: Roboto, Helvetica, Arial, sans-serif;
   background-color: #EEDAC1 !important;
+  margin: 0;
+  font-size: 100%;
 }
 
-h2, h3, h4 {
+h1, h2, h3, h4 {
   font-family: "Roboto Slab", Palatino, serif;
   font-weight: normal;
 }
 
+h1 {
+  margin: 20px 0;
+}
+
 #page {
-  margin: 60px auto 40px;
-  width: 768px;
   text-align: left;
 }
 
 header {
-  display: block;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: #C6A99B;
+  float: left;
+  width: 30%;
 
   .navbar {
     padding: 0 20px;
@@ -46,9 +42,13 @@ header {
 }
 
 #main {
-  clear: both;
   padding: 20px;
   background-color: #FFF;
+  margin-left: 30%;
+
+  h2 {
+    margin-top: 0;
+  }
 
   .post-item {
     margin-bottom: 20px;
@@ -56,7 +56,31 @@ header {
     border-bottom: 1px #CCC solid;
 
     .metadata {
-      font-size: .8em;
+      font-size: 82.5%;
     }
   }
+}
+
+label {
+  font-family: 'Roboto Slab', Palatino, serif;
+  font-weight: bold;
+  display: block;
+}
+
+input[type="text"], input[type="select"], textarea, input[type="submit"] {
+  display: block;
+  margin-bottom: 1em;
+}
+
+input[type="submit"], input[type="button"] {
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  background-color: #C6A99B;
+  color: #FFF;
+  padding: 8px 20px;
+  font-size: 100%;
+  border: 1px #917b71 solid;
+  text-shadow: -1px -1px 1px rgba(0,0,0,.25);
+  box-shadow: 0 1px 0 rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.25);
 }
