@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
 	has_secure_password
 
 	validates_presence_of :username, :password
-	validates_presence_of :password_confirmation, :on => :create
+	validates_presence_of :password_confirmation, :on => [:create, :update]
 	validates_uniqueness_of :username
 
 	attr_accessible :username, :name, :password, :password_confirmation
