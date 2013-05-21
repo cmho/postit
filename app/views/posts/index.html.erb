@@ -1,9 +1,15 @@
+<h2>All Posts</h2>
 <% @posts.each do |post| %>
 	<div class="post-item">
-		<h2><a href="<% unless post.url.empty? %><%= post.url %><% else %><%= post_path(post.id) %><% end %>" rel="external"><%= post.title %></a></h2>
+		<h3><a href="<% unless post.url.empty? %><%= post.url %><% else %><%= post_path(post.id) %><% end %>" rel="external"><%= post.title %></a></h3>
 		<%= post.description %>
 		<div class="metadata">
 			Posted by <%= post.user.name %>
+			<% if post.categories.length > 0 %> in 
+				<% post.categories.each_with_index do |category,i| %>
+					<a href="<%= category_path(category.id) %>"><%= category.name %></a><% unless i == post.categories.length - 1 %>, <% end %>
+				<% end %>
+			<% end %>
 		</div>
 	</div>
 <% end %>

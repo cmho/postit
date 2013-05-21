@@ -3,15 +3,15 @@ Postit::Application.routes.draw do
   	resources :comments, :except => :destroy
   end
 
-  resources :categories, :except => :show
+  resources :categories
 
   resources :users
 
-  resources :sessions, :except => [:show, :update, :edit, :index]
+  resources :sessions
 
   match '/login' => 'sessions#new'
   match '/logout' => 'sessions#destroy'
-  match '/register' => 'user#new'
+  match '/register' => 'users#new'
 
   root to: 'posts#index'
 end

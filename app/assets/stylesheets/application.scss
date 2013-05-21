@@ -15,30 +15,42 @@
 @import 'bootstrap';
 @import "bootstrap-responsive";
 
-.container {
-  margin-left: 135px
+body {
+  text-align: center;
+  background-color: #EEDAC1 !important;
 }
 
-.navbar .nav > li > a.brand {
-  padding-left: 0px;
+#page {
+  margin: 60px auto 40px;
+  width: 768px;
+  text-align: left;
 }
 
-.quiet {
-  color: #ababab;
-}
+header {
+  display: block;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #C6A99B;
 
-div.nav_item {
-  margin-left: 25px;
-  float: left;
-}
-
-.label  {
-  a, a:hover, a:focus {
-    color: #fff;
-    text-decoration: none;
+  .navbar {
+    padding: 0 20px;
   }
 }
 
-div.comment_votes {
-  padding: 10px;
+#main {
+  clear: both;
+  padding: 20px;
+  background-color: #FFF;
+
+  .post-item {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px #CCC solid;
+
+    .metadata {
+      font-size: .8em;
+    }
+  }
 }
