@@ -1,5 +1,3 @@
-require 'pry'
-
 class PostsController < ApplicationController
   def index
   	@posts = Post.all
@@ -14,7 +12,6 @@ class PostsController < ApplicationController
   	@post = Post.new(params[:post])
     @post.categories.delete("")
     @post.categories.map! {|category| Category.find(category)}
-    binding.pry
   	if @post.save
   		redirect_to(@post, :notice => "Your post was created successfully.")
   	else
