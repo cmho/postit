@@ -123,3 +123,31 @@ input[type="submit"], input[type="button"] {
   text-shadow: -1px -1px 1px rgba(0,0,0,.25);
   box-shadow: 0 1px 0 rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.25);
 }
+
+.alert {
+  padding: 3px 5px;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-width: 1px;
+  border-style: solid;
+  margin-bottom: 16px;
+}
+
+.alert-success {
+  background-color: #cde8a2;
+  border-color: #7d905e;
+}
+
+.alert-error {
+  background-color: #e6a1a1;
+  border-color: #905e5e;
+}
+
+.alert .close {
+  display: inline;
+}
+
+.alert #flash_notice, .alert #flash_alert {
+  display: inline;
+}

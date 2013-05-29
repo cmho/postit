@@ -1,16 +1,22 @@
 <h2>All Posts</h2>
 <% @posts.each do |post| %>
 	<div class="post-item">
-		<h3><a href="<% unless post.url.empty? %><%= post.url %><% else %><%= post_path(post.id) %><% end %>" rel="external"><%= post.title %></a></h3>
+		<h3><a href="<% unless post.url.empty? %><%= post.url %><% else %><%= post_path(post.id) %><% end %>" rel="external"><%= post.title %><% unless post.url.empty? %>&rarr;<% end %></a></h3>
+		<div class="voting">
+			<%= render :partial => 'voting', :locals => {:post => post} %>
+		</div>
 		<div class="post-content">
 			<%= post.description %>
 		</div>
 		<div class="metadata">
-			Posted by <%= post.user.name %>
+			<a href="<%= post_path(post.id) %>">∞</a> Posted by <%= post.user.name %> <%= time_ago_in_words(post.created_at) %> ago
 			<% if post.categories.length > 0 %> in 
 				<% post.categories.each_with_index do |category,i| %>
 					<a href="<%= category_path(category.id) %>"><%= category.name %></a><% unless i == post.categories.length - 1 %>, <% end %>
 				<% end %>
+			<% end %>
+			<% if post.user.id == session[:user_id] %>
+				| <a href="<%= edit_post_path(post.id) %>">Edit</a>
 			<% end %>
 		</div>
 	</div>

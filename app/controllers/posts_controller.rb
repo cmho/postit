@@ -1,20 +1,18 @@
-require 'pry'
-
 class PostsController < ApplicationController
   def index
-  	@posts = Post.all
+  	@posts = Post.order("created_at DESC").all
   end
 
   def new
+    check_login
     @post = Post.new
     @category_list = Category.all
   end
 
   def create
+    params[:post][:categories].delete("")
+    params[:post][:categories].map! {|category| Category.find(category)}
   	@post = Post.new(params[:post])
-    @post.categories.delete("")
-    @post.categories.map! {|category| Category.find(category)}
-    binding.pry
   	if @post.save
   		redirect_to(@post, :notice => "Your post was created successfully.")
   	else
@@ -23,7 +21,11 @@ class PostsController < ApplicationController
   end
 
   def edit
+    check_login
   	@post = Post.find(params[:id])
+    unless @post.user_id == current_user.id
+      redirect_to @post, :error => "You're not the owner of this post."
+    end
     @category_list = Category.all
   end
 
@@ -42,5 +44,23 @@ class PostsController < ApplicationController
   	@post = Post.find(params[:id])
   	@comments = Comments.find_all_by_post_id(params[:id])
   	@comment = Comments.new
+  end
+
+  def upvote
+    check_login
+    @post = Post.find(params[:id])
+    @post.votes << Vote.new(:user_id => session[:user], :vote => 1)
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def downvote
+    check_login
+    @post = Post.find(params[:id])
+    @post.votes << Vote.new(:user_id => session[:user], :vote => -1)
+    respond_to do |format|
+      format.js
+    end
   end
 end

@@ -1,31 +1,48 @@
-<h2><% unless @post.url.empty? %><a href="<%= @post.url %>" rel="external"><% end %><%= @post.title %><% unless @post.url.nil? %></a><% end %></h2>
+<div class="post-item show" data-id="<%= @post.id %>">
+	<h2><% unless @post.url.empty? %><a href="<%= @post.url %>" rel="external"><% end %><%= @post.title %><% unless @post.url.empty? %>&rarr;</a><% end %></h2>
+	<div class="voting">
+		<%= render :partial => 'voting', :locals => {:post => @post} %>
+	</div>
 
-<div class="post-content">
-<%= @post.description %>
-</div>
+	<div class="post-content">
+	<%= @post.description %>
+	</div>
 
-<div id="comments">
-	<div id="comment-form">
-		<h3>Post a Comment</h3>
-		<%= form_for [@post, @comment], :url => post_comments_path(@post) do |f| %>
-			<%= f.label :title %>
-			<%= f.text_field :title %>
-			<%= f.label :content %>
-			<%= f.text_area :content, :rows => 10 %>
-			<%= f.hidden_field :user_id, :value => 1 %>
-			<br />
-			<%= f.submit :value => "Post" %>
+	<div class="metadata">
+		Posted by <%= @post.user.name %> <%= time_ago_in_words(@post.created_at) %> ago
+			<% if @post.categories.length > 0 %> in 
+				<% @post.categories.each_with_index do |category,i| %>
+					<a href="<%= category_path(category.id) %>"><%= category.name %></a><% unless i == @post.categories.length - 1 %>, <% end %>
+				<% end %>
+			<% end %>
+			<% if @post.user.id == session[:user_id] %>
+				| <a href="<%= edit_post_path(@post.id) %>">Edit</a>
+			<% end %>
+	</div>
+
+	<div id="comments">
+		<div id="comment-form">
+			<h3>Post a Comment</h3>
+			<%= form_for [@post, @comment], :url => post_comments_path(@post) do |f| %>
+				<%= f.label :title %>
+				<%= f.text_field :title %>
+				<%= f.label :content %>
+				<%= f.text_area :content, :rows => 10 %>
+				<%= f.hidden_field :user_id, :value => 1 %>
+				<br />
+				<%= f.submit :value => "Post" %>
+			<% end %>
+		</div>
+		<% @comments.each do |comment| %>
+			<div class="comment-item">
+				<h4><%= comment.title %></h4>
+				<div class="comment-body">
+					<%= comment.content %>
+				</div>
+				<div class="comment-meta">
+					Posted by <%= comment.user.name %>
+				</div>
+			</div>
 		<% end %>
 	</div>
-	<% @comments.each do |comment| %>
-		<div class="comment-item">
-			<h4><%= comment.title %></h4>
-			<div class="comment-body">
-				<%= comment.content %>
-			</div>
-			<div class="comment-meta">
-				Posted by <%= comment.user.name %>
-			</div>
-		</div>
-	<% end %>
 </div>

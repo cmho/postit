@@ -7,7 +7,7 @@
 	<%= f.text_field :url %>
 	<%= f.label :description %>
 	<%= f.text_area :description %>
-	<%= f.hidden_field :user_id, :value => 1 %>
+	<%= f.hidden_field :user_id, :value => session[:user_id] %>
 	<%= f.label :categories %>
 	<%= f.select :categories, @category_list.collect{|c| [c.name, c.id]}, {}, {multiple: 'multiple'} %>
 	<br />

@@ -12,6 +12,8 @@ Postit::Application.routes.draw do
   match '/login' => 'sessions#new'
   match '/logout' => 'sessions#destroy'
   match '/register' => 'users#new'
+  match '/posts/:id/up' => 'posts#upvote'
+  match '/posts/:id/down' => 'posts#downvote'
 
   root to: 'posts#index'
 end

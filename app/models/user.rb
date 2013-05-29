@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
 
 	has_many :posts
 	has_many :comments
+	has_many :votes
 
 	def self.authenticate(username, password)
 		find_by_username(username).try(:authenticate, password)

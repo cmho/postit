@@ -16,7 +16,11 @@ class UsersController < ApplicationController
 	end
 
 	def edit
+		check_login
 		@user = User.find(session[:user_id])
+		unless @user.id == current_user.id
+			redirect_to user_path(@user)
+		end
 	end
 
 	def update

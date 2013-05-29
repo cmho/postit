@@ -4,6 +4,7 @@ class CategoriesController < ApplicationController
 	end
 
 	def new
+		check_login
 		@category = Category.new
 	end
 
@@ -22,6 +23,7 @@ class CategoriesController < ApplicationController
 	end
 
 	def edit
+		check_login
 		@category = Category.find(params[:id])
 	end
 
