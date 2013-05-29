@@ -1,0 +1,1 @@
+Score: <span class="score post-<%= post.id %>-score"><%= post.post_score %></span><% if is_logged_in? %> (<a href="/posts/<%= post.id %>/up" class="upvote">+</a> / <a href="/posts/<%= post.id %>/down" class="downvote">-</a>)<% end %>
