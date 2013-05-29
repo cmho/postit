@@ -14,6 +14,8 @@ Postit::Application.routes.draw do
   match '/register' => 'users#new'
   match '/posts/:id/up' => 'posts#upvote'
   match '/posts/:id/down' => 'posts#downvote'
+  match '/comments/:id/up' => 'comments#upvote'
+  match '/comments/:id/down' => 'comments#downvote'
 
   root to: 'posts#index'
 end

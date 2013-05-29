@@ -24,4 +24,12 @@ class CommentsController < ApplicationController
 	def edit
 		@comment = Comments.find(param[:id])
 	end
+
+	def upvote
+
+	end
+
+	def downvote
+
+	end
 end
